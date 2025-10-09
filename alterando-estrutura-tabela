@@ -1,0 +1,56 @@
+#aula 6 do curso em video - alterando a estrutura da tabela
+use cadastro;
+
+alter table pessoas add column profissao varchar(10); # adiciona um campo na tabela
+
+alter table pessoas drop column profissao; # deleta a coluna profissao
+
+# pra adicionar a profissao em outro lugar na tabela, ao inves de criar ao final da tabela
+alter table pessoas
+add column profissao varchar(10) after nome; # adiciona depois da coluna 'nome'
+
+
+# pra adicionar um campo como primeiro campo na tabela
+alter table pessoas
+add column codigo int first;
+
+# alterar tipo primitivo e constraints definida ao criar a coluna
+alter table pessoas
+modify column profissao varchar(20) not null default ' ';
+
+# alterar nome da coluna, suas constrains e tipo primitivo
+# coloca o nome antigo da coluna e o novo nome + as constraints
+alter table pessoas
+change column profissao prof varchar(20) not null default ' ';
+
+# renomear a table inteira
+alter table pessoas
+rename to gafanhotos;
+
+select * from gafanhotos;
+
+# pra colocar um campo ao final da tabela = nao precisa especificar nada no add column
+# pra colocar depois de uma outra coluna = after ~nome-da-coluna~
+# pra colocar como primeiro campo = add column nomeColuna tipoDaColuna first
+
+
+# criando uma nova tabela
+
+create table if not exists cursos (
+	nome varchar(30) not null unique, # unique nao permite dois cursos com o mesmo nome
+    descricao text,
+    carga int unsigned,
+    totaulas int unsigned,
+    ano year default '2025'
+) default charset = utf8mb4;
+
+# adicionar o id e primary key
+
+alter table cursos
+add column  idcurso int first;
+
+alter table cursos
+add primary key (idcurso);
+
+# pra apagar uma tabela inteira
+drop table cursos;
