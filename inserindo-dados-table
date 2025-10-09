@@ -1,0 +1,23 @@
+#aula 5 do curso em vídeo - INSERINDO DADOS NA TABELA (INSERT INTO)
+
+use cadastro;
+
+insert into pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+values
+(default,'Leticia', '1999-11-22', 'F', '48', '1.62','Brasil');
+
+# OU
+
+insert into pessoas values (default, 'Yan', '1996-02-06', 'M', '70.38', '1.83', 'Alemanha');
+
+# OU: (para inserir mais de uma pessoa ao mesmo tempo)
+
+insert into pessoas values (default, 'Ana', '1970-06-11', 'F', '68.80', '1.62', 'Brasil'),
+(default, 'Pedro', '2024-03-04', 'M', '10.0', '0.80', 'Itália'),
+(default, 'Catarina', '1980-11-09', 'F', '66.80', '1.70', 'Marrocos');
+
+#id eh autoincrementado, entao nao precisa colocar como valor
+# default = pega as configurações padrão da create table
+
+select * from pessoas; # pra ver a tabela
